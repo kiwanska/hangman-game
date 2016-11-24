@@ -1,0 +1,7 @@
+* { padding: 0; margin: 0; font-family: "Aller Display", sans-serif; }
+
+body { width: 100%; background-color: #3b4163; color: #ffffff; }
+
+.container { width: 100%; max-width: 500px; margin: 5% auto; padding: 2%; background-color: #ffffff; }
+
+@importman 'hangman';

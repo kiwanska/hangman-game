@@ -1,0 +1,19 @@
+* {
+	padding: 0;
+	margin: 0;
+    font-family: $font;
+}
+
+body {
+	width: 100%;
+	background-color: $bg-violet;
+    color: $white;
+}
+
+.container {
+	width: 100%;
+	max-width: 500px;
+	margin: 5% auto;
+    padding: 2%;
+    background-color: $white;
+}
