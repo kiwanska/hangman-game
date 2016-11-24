@@ -1,7 +1,19 @@
 * { padding: 0; margin: 0; font-family: "Aller Display", sans-serif; }
 
-body { width: 100%; background-color: #3b4163; color: #ffffff; }
+body { width: 100vw; height: 100vh; background-color: #3b4163; color: #ffffff; display: flex; justify-content: center; align-items: center; }
 
-.container { width: 100%; max-width: 500px; margin: 5% auto; padding: 2%; background-color: #ffffff; }
+.game { width: 810px; height: 490px; background-color: #f5f5f5; border-radius: 5px; position: relative; }
 
-@importman 'hangman';
+.letters { width: 100%; position: absolute; bottom: 0; display: flex; justify-content: center; margin-bottom: 35px; }
+
+.letter { width: 62px; height: 70px; display: flex; justify-content: center; align-items: center; margin: 5px; border-radius: 5px; background-color: #53555d; }
+
+.letter p { font-size: 36px; line-height: 70px; text-transform: uppercase; }
+
+.letter.not-found p { display: none; }
+
+.missed { width: 50%; float: right; margin: 35px 35px 0 0; font-size: 16px; text-transform: uppercase; color: #53555d; }
+
+.game-over { display: none; }
+
+.hangman { width: 30%; float: left; }

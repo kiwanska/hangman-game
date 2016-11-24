@@ -5,15 +5,19 @@
 }
 
 body {
-	width: 100%;
+	width: 100vw;
+    height: 100vh;
 	background-color: $bg-violet;
     color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
-	width: 100%;
-	max-width: 500px;
-	margin: 5% auto;
-    padding: 2%;
-    background-color: $white;
+.game {
+	width: 810px;
+    height: 490px;
+    background-color: $dark-white;
+    border-radius: 5px;
+    position: relative;
 }
