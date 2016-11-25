@@ -57,7 +57,7 @@ class App extends Component {
     const { word, letters, missed } = this.state;
     if (word.includes(key)) {
       const newLetters = letters.map(({ val, isFound }) => {
-                                (isFound === true) && this.errorMessage();
+                                (isFound === true && val === key) && this.errorMessage();
                                 (val === key) && (isFound = true);
                                 return {val: val, isFound: isFound}
       });

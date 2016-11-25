@@ -9,7 +9,7 @@ class GameOver extends Component {
 
     render() {
 
-        const { isOver, isWon, newWord } = this.props;
+        const { isOver, isWon } = this.props;
         const message = (isWon) ? "you've won!" : "game over";
 
         
