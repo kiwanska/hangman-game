@@ -1,12 +1,11 @@
 .letters {
     width: 100%;
     box-sizing: border-box;
-    position: absolute;
-    bottom: 0;
+    position: relative;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 0 30px 35px 30px;
+    padding: 35px 30px 35px 30px;
     z-index: 5;
 }
 

@@ -50,12 +50,13 @@ class App extends Component {
     const { word, letters, missed } = this.state;
     if (word.includes(key)) {
       const newLetters = letters.map(({ val, isFound }) => {
+                                (isFound === true) && this.errorMessage();
                                 (val === key) && (isFound = true);
                                 return {val: val, isFound: isFound}
       });
       this.setState({ letters: newLetters })
     } else if (missed.includes(key)) {
-        console.log('juz bylo');
+        this.errorMessage();
     } else {
       this.setState((prevState) => {
         return {missed: [...this.state.missed, key],
@@ -65,10 +66,18 @@ class App extends Component {
     this.isItOver();
   }
 
+  errorMessage = () => {
+    const messageWrapper = document.querySelector('.message');
+    messageWrapper.innerText = 'try another!';
+    setTimeout(function(){
+      messageWrapper.innerText = '';
+    }, 700);
+  }
+
   isItOver = () => {
     const { letters, missedCount, word } = this.state;
     const foundLetters = letters.filter(({ isFound }) => isFound);
-    if (missedCount > 11) {
+    if (missedCount > 10) {
       this.setState({ gameOver: true });
     } else if (foundLetters.length === word.length) {
       this.setState({ 
@@ -86,7 +95,7 @@ class App extends Component {
       <div className="game">
         <Hangman count={missedCount} />
         <Missed missed={missed} />
-        <Message show='' />
+        <Message />
         <Letters letters={letters} />
         <GameOver isOver={gameOver} isWon={gameWon} />
       </div>

@@ -2,6 +2,8 @@ import React from 'react';
 
 function GameOver({ isOver, isWon }) {
 
+    console.log(isOver);
+
     const message = (isWon) ? "you've won!" : "game over";
 
     function reload(){

@@ -28,7 +28,6 @@ class Hangman extends Component {
 
         return (
           <div className="hangman">
-            <p>hangman state: {count}</p>
             {hangman}
           </div>
         );

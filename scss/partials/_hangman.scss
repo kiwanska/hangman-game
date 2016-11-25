@@ -1,6 +1,7 @@
 .hangman {
     width: 20%;
     min-width: 200px;
+    height: 320px;
     float: left;
     margin-top: 35px;
     position: relative;
@@ -60,10 +61,8 @@
     height: 83px;
     background-color: $light-green;
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 73px;
     top: 135px;
-    margin: 0 auto;
     border-radius: 5px;
     overflow: hidden;
     &:before {
@@ -95,7 +94,6 @@
     position: absolute;
     top: 130px;
     border-radius: 5px;
-    overflow: hidden;
 }
 
 .right-arm {
@@ -112,11 +110,70 @@
     transform: rotate(45deg);
 }
 
-// 'right-arm',
-// 'left-arm',
-// 'right-hand',
-// 'left-hand',
-// 'right-leg',
-// 'left-leg',
+@mixin hand() {
+    z-index: 2;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 190px;
+    border-radius: 50%;
+    background-color: $body;
+}
+
+.right-hand {
+    @include hand;
+    right: 20px;
+}
+
+.left-hand {
+    @include hand;
+    left: 21px;
+}
+
+@mixin leg() {
+    z-index: 3;
+    width: 25px;
+    height: 90px;
+    position: absolute;
+    top: 210px;
+    border-radius: 5px;
+    background-color: $dark-blue;
+}
+
+.right-leg {
+    @include leg;
+    right: 65px;
+    transform: rotate(-10deg);
+}
+
+.left-leg {
+    @include leg;
+    left: 66px;
+    transform: rotate(10deg);
+}
+
+@mixin foot() {
+    z-index: 2;
+    width: 40px;
+    height: 15px;
+    position: absolute;
+    top: 292px;
+    border-radius: 5px;
+    background-color: $body;
+}
+
+.right-foot {
+    @include foot;
+    right: 40px;
+    transform: rotate(-6deg);
+}
+
+.left-foot {
+    @include foot;
+    left: 41px;
+    transform: rotate(6deg);
+}
+
+
 // 'right-foot',
 // 'left-foot'
