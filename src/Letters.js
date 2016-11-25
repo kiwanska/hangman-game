@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Letter from './Letter';
 
 function Letters({ letters }) {
 
-    const all = [...letters].map(({ val, isFound }) => {
+    const all = [...letters].map(({ val, isFound }, index) => {
         const found = (isFound) && val;
-        return <Letter isFound={found} >{val}</Letter>
+        return <Letter key={index} isFound={found} >{val}</Letter>
     })
 
     return (

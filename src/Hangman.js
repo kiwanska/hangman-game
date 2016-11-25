@@ -1,13 +1,39 @@
 import React, { Component } from 'react';
 
-function Hangman({ count }){
+class Hangman extends Component {
 
-    return (
-      <div className="hangman">
-        <p>hangman state: {count}</p>
-      </div>
-    );
+    state = {
+        elements: [
+            'gallows',
+            'head',
+            'neck',
+            'body',
+            'right-arm',
+            'left-arm',
+            'right-hand',
+            'left-hand',
+            'right-leg',
+            'left-leg',
+            'right-foot',
+            'left-foot'
+        ]
+    }
+    render() {
+
+        const { count } = this.props;
+        const { elements } = this.state;
+
+        const hangman = elements.filter((value, index) => index <= count)
+                                .map((value, index) => <div key={index} className={value} />);
+
+        return (
+          <div className="hangman">
+            <p>hangman state: {count}</p>
+            {hangman}
+          </div>
+        );
+    }
+    
 }
-
 
 export default Hangman;

@@ -6,3 +6,12 @@
     text-transform: uppercase;
     color: $dark-grey;
 }
+
+.missed-letters{
+    span {
+        color: $crazy-blue;
+        font-size: 46px;
+        margin-right: 10px;
+        float: left;
+    }
+}

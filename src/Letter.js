@@ -5,11 +5,12 @@ class Letter extends Component {
     render() {
 
         const { children, isFound } = this.props;
+        const letter = (isFound) && children;
         const letterClass = (isFound) ? 'letter found' : 'letter not-found';
 
         return (
             <div className={letterClass} >
-                <p>{children}</p>
+                <p>{letter}</p>
             </div>
         );
 

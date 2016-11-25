@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Hangman from './Hangman';
 import Missed from './Missed';
+import Message from './Message';
 import Letters from './Letters';
 import GameOver from './GameOver';
 import '../css/style.css';
@@ -9,11 +10,11 @@ class App extends Component {
 
   state = {
     word: '',
-    letters: {
-
-    },
+    letters: {},
     missed: [],
-    missedCount: 0
+    missedCount: 0,
+    gameOver: false,
+    gameWon: false
   }
 
   constructor(props) {
@@ -22,7 +23,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('keypress', this.checkLetter);
+    window.addEventListener('keypress', (event) => {
+      (!this.state.gameOver) && this.checkLetter(event);
+    });
   }
 
   getWord = () => {
@@ -44,30 +47,48 @@ class App extends Component {
   }
 
   checkLetter = ({ key }) => {
-    const { word, letters } = this.state;
+    const { word, letters, missed } = this.state;
     if (word.includes(key)) {
       const newLetters = letters.map(({ val, isFound }) => {
-        (val === key) && (isFound = true);
-        return {val: val, isFound: isFound}
+                                (val === key) && (isFound = true);
+                                return {val: val, isFound: isFound}
       });
       this.setState({ letters: newLetters })
+    } else if (missed.includes(key)) {
+        console.log('juz bylo');
     } else {
       this.setState((prevState) => {
-        return {missedCount: prevState.missedCount + 1};
+        return {missed: [...this.state.missed, key],
+                missedCount: prevState.missedCount + 1};
+      });
+    }
+    this.isItOver();
+  }
+
+  isItOver = () => {
+    const { letters, missedCount, word } = this.state;
+    const foundLetters = letters.filter(({ isFound }) => isFound);
+    if (missedCount > 11) {
+      this.setState({ gameOver: true });
+    } else if (foundLetters.length === word.length) {
+      this.setState({ 
+        gameOver: true,
+        gameWon: true
       });
     }
   }
 
   render() {
 
-    const { letters, missedCount } = this.state;
+    const { letters, missedCount, missed, gameOver, gameWon } = this.state;
 
     return (
       <div className="game">
         <Hangman count={missedCount} />
-        <Missed />
+        <Missed missed={missed} />
+        <Message show='' />
         <Letters letters={letters} />
-        <GameOver />
+        <GameOver isOver={gameOver} isWon={gameWon} />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 * {
 	padding: 0;
 	margin: 0;
-    font-family: $font;
+    font-family: $main-font;
 }
 
 body {
@@ -15,9 +15,22 @@ body {
 }
 
 .game {
-	width: 810px;
-    height: 490px;
+	max-width: 810px;
+    width: 90vw;
+    min-height: 490px;
     background-color: $dark-white;
     border-radius: 5px;
     position: relative;
+    overflow: hidden;
+    &:after {
+        content: '';
+        display: inline-block;
+        width: 200px;
+        height: 500px;
+        transform: rotate(45deg);
+        background-color: $crazy-blue;
+        position: absolute;
+        bottom: -220px;
+        right: 0;
+    }
 }

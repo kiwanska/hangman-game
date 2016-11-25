@@ -1,4 +1,122 @@
 .hangman {
-    width: 30%;
+    width: 20%;
+    min-width: 200px;
     float: left;
+    margin-top: 35px;
+    position: relative;
 }
+
+.gallows {
+    z-index: 1;
+    width: 150px;
+    height: 15px;
+    background-color: $dark-grey;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: -30px;
+    &:after {
+        content: '';
+        display: block;
+        width: 15px;
+        height: 30px;
+        position: absolute;
+        right: 12px;
+        top: 15px;
+        background-color: $dark-grey;
+    }
+}
+
+.head {
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    background-image: url("../imgs/head.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25px;
+    margin: 0 auto;
+}
+
+.neck {
+    z-index: 1;
+    width: 22px;
+    height: 20px;
+    background-color: $body;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 120px;
+    margin: 0 auto;
+}
+
+.body {
+    z-index: 1;
+    width: 55px;
+    height: 83px;
+    background-color: $light-green;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 135px;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+    &:before {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 60px;
+        position: absolute;
+        left: 50%;
+        top: 0px;
+        background-color: $dark-green;
+    }
+    &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 60px;
+        position: absolute;
+        left: 0;
+        top: 60px;
+        background-color: $dark-blue;
+    }
+}
+
+@mixin arm() {
+    z-index: 3;
+    width: 22px;
+    height: 80px;
+    position: absolute;
+    top: 130px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.right-arm {
+    @include arm;
+    background-color: $dark-green;
+    right: 44px;
+    transform: rotate(-45deg);
+}
+
+.left-arm {
+    @include arm;
+    background-color: $light-green;
+    left: 45px;
+    transform: rotate(45deg);
+}
+
+// 'right-arm',
+// 'left-arm',
+// 'right-hand',
+// 'left-hand',
+// 'right-leg',
+// 'left-leg',
+// 'right-foot',
+// 'left-foot'

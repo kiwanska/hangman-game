@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Missed extends Component {
+function Missed({ missed }){
 
-  render() {
+    const missedLetters = missed.map((value, index) => {
+        return <span key={index}>{value}</span>
+        });
 
     return (
       <div className="missed">
         <p>you missed: </p>
+        <p className="missed-letters">{missedLetters}</p>
       </div>
     );
-  }
+
 }
 
 export default Missed;
