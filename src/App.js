@@ -32,7 +32,14 @@ class App extends Component {
     fetch('http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=11&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5')
       .then(response => response.json()
       .then(word => {
-        this.setState({ word: word.word })
+        this.setState({ 
+          word: word.word,
+          letters: {},
+          missed: [],
+          missedCount: 0,
+          gameOver: false,
+          gameWon: false
+        })
       })
       .then(this.setLetters)
       .catch((err) => console.log('ERROR', err)));
@@ -97,7 +104,7 @@ class App extends Component {
         <Missed missed={missed} />
         <Message />
         <Letters letters={letters} />
-        <GameOver isOver={gameOver} isWon={gameWon} />
+        <GameOver isOver={gameOver} isWon={gameWon} getWord={this.getWord}/>
       </div>
     );
   }

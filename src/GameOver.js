@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function GameOver({ isOver, isWon }) {
+class GameOver extends Component {
 
-    console.log(isOver);
+    newWord = () => {
+            const { getWord } = this.props;
+            getWord();
+        };
 
-    const message = (isWon) ? "you've won!" : "game over";
+    render() {
 
-    function reload(){
-        window.location.reload()
-    };
+        const { isOver, isWon, newWord } = this.props;
+        const message = (isWon) ? "you've won!" : "game over";
 
-    const gameOverElement = (isOver) && (
-       <div className="game-over">
-        <div className="wrapper">
-            <p>{message}</p>
-            <button onClick={reload}>new word</button>
-        </div>
-      </div> 
-    );
+        
 
-    return gameOverElement;
+        const gameOverElement = (isOver) && (
+           <div className="game-over">
+            <div className="wrapper">
+                <p>{message}</p>
+                <button onClick={this.newWord}>new word</button>
+            </div>
+          </div> 
+        );
+
+        return gameOverElement;
+    }
+
 }
 
 export default GameOver;
