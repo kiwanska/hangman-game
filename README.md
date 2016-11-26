@@ -2,6 +2,9 @@
 
 Build with React
 
+Idea & design: Netguru
+
+
 `npm install`
 and
 `npm start`
